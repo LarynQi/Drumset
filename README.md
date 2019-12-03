@@ -1,2 +1,2 @@
 # Drumset
-Your keyboard is now a drumset! (In Progress)
+Your keyboard is now a (Python fueled) drumset! (In Progress)
