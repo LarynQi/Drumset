@@ -1,3 +1,49 @@
+from playsound import playsound
+from pynput import keyboard as kb
+hihat= "resources/hihatclosed1.wav"
+bass="resources/basshiphop.wav"
+snare="resources/snarehiphop3.wav"
+
+def main():
+    check_e = True
+    check_w = True
+    check_r = True
+    def on_key_press(key):
+        nonlocal check_e
+        nonlocal check_r
+        nonlocal check_w
+        letter = str(key)
+        if letter == "'q'":
+            exit()
+        if letter == "'e'" and check_e:
+            check_e = False
+            playsound(hihat, False)
+        if letter == "'w'" and check_w:
+            check_w = False
+            playsound(bass, False)
+        if letter == "'r'" and check_r:
+            check_r = False
+            playsound(snare, False)
+    def on_key_release(key):
+        nonlocal check_e
+        nonlocal check_r
+        nonlocal check_w
+        letter = str(key)
+        if letter == "'e'":
+            check_e = True
+        if letter == "'w'":
+            check_w = True
+        if letter == "'r'":
+            check_r = True
+        #print('Released Key %s' % key)
+    with kb.Listener(on_press = on_key_press, on_release = on_key_release) as listener:
+        listener.join()
+main()
+
+
+
+
+
 # #https://www.youtube.com/watch?v=x8GbWt56TlY
 
 # from pynput.keyboard import Key, Listener
@@ -53,14 +99,14 @@
 
 #https://stackoverflow.com/questions/24072790/detect-key-press-in-python
 
-import keyboard
-import pyglet
+# import keyboard
+# import pyglet
 
-import simpleaudio as sa
-from playsound import playsound
-hihat= "resources/hihatclosed1.wav"
-bass="resources/basshiphop.wav"
-snare="resources/snarehiphop3.wav"
+# import simpleaudio as sa
+
+
+
+
 
 # wave_obj = sa.WaveObject.from_wave_file(filename)
 # play_obj = wave_obj.play()
@@ -74,35 +120,36 @@ snare="resources/snarehiphop3.wav"
 
 # pyglet.app.run()
 # keyboard.add_hotkey('e', lambda: playsound('hihatclosed1.wav'))
-while True:
-#     # https://realpython.com/playing-and-recording-sound-python/#playing-audio-files
-#     # keypressed = sys.stdin.read(1)
-#     # if keypressed == 'q':
-#     #     exit() 
-#     # elif keypressed == 'e':
-#     #     playsound('hihatclosed1.wav')
-#     # elif keypressed == 'w':
-#     #     playsound('basshiphop.wav')
-#     # elif keypressed == 'r':
-#     #     playsound('snarehiphop3.wav')
-#     # this also returns the key pressed, if you want to store it
-#     #input = input("Enter input")
-#     #do_whatever_with_it
-    if keyboard.is_pressed('q'):
-        exit()
-    if keyboard.is_pressed('e'):
-        #playsound('hihatclosed1.wav')
-        wave_obj = sa.WaveObject.from_wave_file(hihat)
-        play_obj = wave_obj.play()
-        play_obj.wait_done()
-    if keyboard.is_pressed('w'):
-        #playsound('basshiphop.wav')
-        wave_obj = sa.WaveObject.from_wave_file(bass)
-        play_obj = wave_obj.play()
-        #play_obj.wait_done()
-    if keyboard.is_pressed('r'):
-        #playsound('snarehiphop3.wav')
-        wave_obj = sa.WaveObject.from_wave_file(snare)
-        play_obj = wave_obj.play()
-        play_obj.wait_done()
-   
+
+
+# while True:
+# #     # https://realpython.com/playing-and-recording-sound-python/#playing-audio-files
+# #     # keypressed = sys.stdin.read(1)
+# #     # if keypressed == 'q':
+# #     #     exit() 
+# #     # elif keypressed == 'e':
+# #     #     playsound('hihatclosed1.wav')
+# #     # elif keypressed == 'w':
+# #     #     playsound('basshiphop.wav')
+# #     # elif keypressed == 'r':
+# #     #     playsound('snarehiphop3.wav')
+# #     # this also returns the key pressed, if you want to store it
+# #     #input = input("Enter input")
+# #     #do_whatever_with_it
+#     if keyboard.is_pressed('q'):
+#         exit()
+#     if keyboard.is_pressed('e'):
+#         playsound(hihat, True)
+#         # wave_obj = sa.WaveObject.from_wave_file(hihat)
+#         # play_obj = wave_obj.play()
+#         # play_obj.wait_done()
+#     if keyboard.is_pressed('w'):
+#         playsound(bass, True)
+#         # wave_obj = sa.WaveObject.from_wave_file(bass)
+#         # play_obj = wave_obj.play()
+#         #play_obj.wait_done()
+#     if keyboard.is_pressed('r'):
+#         playsound(snare, True)
+#         # wave_obj = sa.WaveObject.from_wave_file(snare)
+#         # play_obj = wave_obj.play()
+#         # play_obj.wait_done()

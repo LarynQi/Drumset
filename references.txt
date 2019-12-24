@@ -1,0 +1,8 @@
+# REFERENCES
+
+Handling the keyboard:
+    https://pynput.readthedocs.io/en/latest/keyboard.html
+
+Sounds:
+    https://pypi.org/project/playsound/
+
