@@ -1,2 +1,5 @@
-# Drumset
-Your keyboard is now a drumset! (In Progress)
+# Python Drum Set
+
+## Resources
+
+* Python
