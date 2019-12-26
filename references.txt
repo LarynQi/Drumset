@@ -6,3 +6,11 @@ Handling the keyboard:
 Sounds:
     https://pypi.org/project/playsound/
 
+Volume Control:
+    https://unix.stackexchange.com/questions/102552/get-the-current-volume-level-in-os-x-terminal-cli
+    
+    https://stackoverflow.com/questions/45772011/how-to-change-volume-with-python
+    
+https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/reference/ASLR_cmds.html
+    
+    https://github.com/kyleneideck/BackgroundMusic
