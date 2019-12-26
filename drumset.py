@@ -8,11 +8,21 @@ def main():
     check_e = True
     check_w = True
     check_r = True
+    check_plus = True
+    check_minus = True
     def on_key_press(key):
         nonlocal check_e
         nonlocal check_r
         nonlocal check_w
+        nonlocal check_plus
+        nonlocal check_minus
         letter = str(key)
+        if letter == "'='" and check_plus:
+            setVolume(1)
+            check_plus = False
+        if letter == "'-'" and check_minus:
+            setVolume(-1)
+            check_minus = False
         if letter == "'q'":
             exit()
         if letter == "'e'" and check_e:
@@ -28,7 +38,13 @@ def main():
         nonlocal check_e
         nonlocal check_r
         nonlocal check_w
+        nonlocal check_plus
+        nonlocal check_minus
         letter = str(key)
+        if letter == "'='":
+            check_plus = True
+        if letter == "'-'":
+            check_minus = True
         if letter == "'e'":
             check_e = True
         if letter == "'w'":
@@ -38,7 +54,27 @@ def main():
         #print('Released Key %s' % key)
     with kb.Listener(on_press = on_key_press, on_release = on_key_release) as listener:
         listener.join()
-main()
+#from pulsectl import Pulse, PulseVolumeInfo
+import osascript
+
+def setVolume(crease):
+    settings = osascript.osascript("get volume settings")[1]
+    index = 14
+    curr_vol = 0
+    while settings[index] != ",":
+        curr_vol = 10 * curr_vol + int(settings[index])
+        index += 1
+    # print(settings)
+    print(curr_vol)
+    osascript.osascript("set volume output volume " + str(crease * 7 + curr_vol))
+    # with Pulse('volume-example') as pulse:
+    #     sink_input = pulse.sink_input_list()[0]
+
+    #     volume = sink_input.volume
+    #     volume.value_flat = 0
+    #     pulse.volume_set(sink_input, volume)    
+if __name__ == "__main__":
+    main()
 
 
 """TESTING"""
